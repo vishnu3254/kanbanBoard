@@ -37,8 +37,3 @@ function ListTasks({ tasks, setTasks }) {
 }
 
 export default ListTasks;
-
-
-
-
-

@@ -1,7 +1,6 @@
 import { useDrop } from "react-dnd";
 import { Header } from "./Header";
 import { Task } from "./Task";
-import { toast } from "react-hot-toast";
 
 export const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
   // drop functionality
