@@ -1,9 +1,18 @@
+import React from "react";
 import { useDrop } from "react-dnd";
 import { Header } from "./Header";
 import { Task } from "./Task";
+import { toast } from "react-hot-toast";
 
-export const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
-  // drop functionality
+export const Section = ({
+  status,
+  tasks,
+  setTasks,
+  todos,
+  inProgress,
+  closed,
+}) => {
+  // drop functionality using useDrop hook from react-dnd
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "task",
     drop: (item) => addItemToSection(item.id),
@@ -14,7 +23,7 @@ export const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) 
 
   // function for addItemToSection
   const addItemToSection = (id) => {
-    // console.log("dropped", id);
+    // update or modify the status of the task
     setTasks((prevTasks) => {
       const modifiedTask = prevTasks.map((task) => {
         // modify the status
@@ -23,12 +32,16 @@ export const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) 
         }
         return task;
       });
+      // update the tasks in localstorage
       localStorage.setItem("tasks", JSON.stringify(modifiedTask));
       toast.success("Task status changed");
       return modifiedTask;
     });
   };
 
+  // dynamically change the component based on the text bg(background color) and taskToMap based on props
+  // tasksToMap is a placeholder that contains todos tasks or inProgress tasks or closed tasks Dynamically
+  // initial state is todo
   let text = "Todo";
   let bg = "bg-slate-500";
   let tasksToMap = todos;
@@ -44,10 +57,15 @@ export const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) 
   }
 
   return (
+    // drop reference
     <div className={`w-64`} ref={drop}>
+      {/* header  */}
       <Header text={text} bg={bg} count={tasksToMap?.length} />
+
+      {/*rendering tasks */}
       {tasksToMap?.length > 0 &&
         tasksToMap?.map((task, index) => (
+          // returning individual task component
           <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
         ))}
     </div>

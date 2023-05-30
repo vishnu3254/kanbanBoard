@@ -3,13 +3,13 @@ import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 
 function CreateTask({ tasks, setTasks }) {
+
   // state for creating a single indivdual task
   const [task, setTask] = useState({
     id: "",
     name: "",
     status: "todo",
   });
-  console.log("aaaaaa", tasks);
 
   // if the create button is pressed
   const handleSubmit = (e) => {
@@ -23,6 +23,7 @@ function CreateTask({ tasks, setTasks }) {
     // setTasks
     setTasks((tasks) => {
       const list = [...tasks, task];
+      // set the task to localstorage
       localStorage.setItem("tasks", JSON.stringify(list));
       return list;
     });
