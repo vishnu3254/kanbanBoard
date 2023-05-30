@@ -2,7 +2,6 @@ import React from "react";
 import { useDrop } from "react-dnd";
 import { Header } from "./Header";
 import { Task } from "./Task";
-import { toast } from "react-hot-toast";
 
 export const Section = ({
   status,
@@ -11,6 +10,7 @@ export const Section = ({
   todos,
   inProgress,
   closed,
+  blocked
 }) => {
   // drop functionality using useDrop hook from react-dnd
   const [{ isOver }, drop] = useDrop(() => ({
@@ -34,7 +34,7 @@ export const Section = ({
       });
       // update the tasks in localstorage
       localStorage.setItem("tasks", JSON.stringify(modifiedTask));
-      toast.success("Task status changed");
+      // toast.success("Task status changed");
       return modifiedTask;
     });
   };
@@ -45,15 +45,23 @@ export const Section = ({
   let text = "Todo";
   let bg = "bg-slate-500";
   let tasksToMap = todos;
+
   if (status === "inprogress") {
     text = "In Progress";
     bg = "bg-purple-500";
     tasksToMap = inProgress;
   }
+
   if (status === "closed") {
     text = "Closed";
     bg = "bg-green-500";
     tasksToMap = closed;
+  }
+  
+  if(status === "blocked"){
+    text="Blocked"
+    bg = "bg-slate-600"
+    tasksToMap = blocked
   }
 
   return (
