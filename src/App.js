@@ -26,7 +26,7 @@ function App() {
       {/* toasting functionality */}
       <Toaster />
 
-      <div className="bg-slate-100 w-screen h-screen flex flex-col items-center pt-12 gap-16">
+      <div className="bg-slate-100 flex flex-col items-center pt-12 gap-16">
         {/* creating tasks */}
         <CreateTask tasks={tasks} setTasks={setTasks} />
 

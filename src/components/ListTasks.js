@@ -31,16 +31,18 @@ function ListTasks({ tasks, setTasks }) {
     <div className="container justify-center flex gap-20">
       {/* Section is a component acts a column for todo inProgress and closed */}
       {statuses.map((status, index) => (
-        <Section
-          key={index}
-          status={status}
-          tasks={tasks}
-          setTasks={setTasks}
-          todos={todos}
-          inProgress={inProgress}
-          closed={closed}
-          blocked={blocked}
-        />
+        <div className=" p-3" key={index}>
+          <Section
+            key={index}
+            status={status}
+            tasks={tasks}
+            setTasks={setTasks}
+            todos={todos}
+            inProgress={inProgress}
+            closed={closed}
+            blocked={blocked}
+          />
+        </div>
       ))}
     </div>
   );

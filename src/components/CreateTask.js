@@ -47,6 +47,7 @@ function CreateTask({ tasks, setTasks }) {
         <input
           type="text"
           placeholder="Enter Todo"
+          id="task"
           value={task.name}
           onChange={(e) =>
             setTask({ ...task, id: uuidv4(), name: e.target.value })

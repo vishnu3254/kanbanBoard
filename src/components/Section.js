@@ -10,7 +10,7 @@ export const Section = ({
   todos,
   inProgress,
   closed,
-  blocked
+  blocked,
 }) => {
   // drop functionality using useDrop hook from react-dnd
   const [{ isOver }, drop] = useDrop(() => ({
@@ -57,16 +57,16 @@ export const Section = ({
     bg = "bg-green-500";
     tasksToMap = closed;
   }
-  
-  if(status === "blocked"){
-    text="Blocked"
-    bg = "bg-slate-600"
-    tasksToMap = blocked
+
+  if (status === "blocked") {
+    text = "Blocked";
+    bg = "bg-slate-600";
+    tasksToMap = blocked;
   }
 
   return (
     // drop reference
-    <div className={`w-64`} ref={drop}>
+    <div className={`w-64`} style={{ minHeight: "100vh" }} ref={drop}>
       {/* header  */}
       <Header text={text} bg={bg} count={tasksToMap?.length} />
 
