@@ -72,7 +72,7 @@ export const Section = ({
 
       {/*rendering tasks */}
       {tasksToMap?.length > 0 &&
-        tasksToMap?.map((task, index) => (
+        tasksToMap?.map((task) => (
           // returning individual task component
           <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
         ))}

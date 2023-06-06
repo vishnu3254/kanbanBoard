@@ -3,7 +3,6 @@ import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 
 function CreateTask({ tasks, setTasks }) {
-
   // state for creating a single indivdual task
   const [task, setTask] = useState({
     id: "",
@@ -17,7 +16,7 @@ function CreateTask({ tasks, setTasks }) {
     e.preventDefault();
 
     // to check if the input field is empty
-    if (task.name.length < 3)
+    if (task.name.length < 3 || task.name.trim() == "") 
       return toast.error("A task must have more than 3 characters");
 
     // setTasks
