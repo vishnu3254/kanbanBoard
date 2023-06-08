@@ -16,7 +16,6 @@ require("dotenv").config();
 
 app.listen(4000, console.log("server is running on 4000..."));
 
-// backend integration with frontend
 app.use(express.static(path.join(__dirname, "../build")));
 
 // body parser
@@ -26,7 +25,6 @@ app.use(cors());
 
 // send mail logic
 app.post("/send-mail", async (req, res) => {
-  res.send({ message: req.body });
   // setting up the email configuration
   const transporter = nodemailer.createTransport({
     service: "Gmail",
@@ -51,4 +49,7 @@ app.post("/send-mail", async (req, res) => {
       console.log("email sent" + info.response);
     }
   });
+
+  res.send({ message: "email sent successfully" });
+
 });

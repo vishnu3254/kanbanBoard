@@ -12,8 +12,14 @@ function App() {
   // state to store all tasks
   const [tasks, setTasks] = useState([]);
 
+
   // state to know when the task is added
   const [taskAdded, setTaskAdded] = useState(false);
+
+
+  const [taskAdded, setTaskAdded] = useState(false);
+
+
 
   // getting the props from child for whenever task is added getting the data from localstorage
   const handleDataFromChild = (data) => {
@@ -42,6 +48,7 @@ function App() {
           });
           // console.log("response", res);
         });
+
       }
       task.schedule = true;
       //update locallstorage
