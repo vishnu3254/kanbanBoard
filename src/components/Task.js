@@ -34,8 +34,11 @@ export const Task = ({ task, tasks, setTasks }) => {
       className={`relative p-4 bg-gray-200 mt-8 shadow-md rounded-md cursor-grab`}
     >
       {/* actual task description */}
-      <p>{task.name}</p>
+      <h4>{task.name}</h4>
 
+      <p>
+        At {task.date} - {task.time}
+      </p>
       {/* delete button to delete tasks */}
       <button
         className="absolute bottom-1 right-1 "
