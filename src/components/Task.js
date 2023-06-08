@@ -31,7 +31,7 @@ export const Task = ({ task, tasks, setTasks }) => {
     // set drag reference
     <div
       ref={drag}
-      className={`relative p-4 bg-gray-200 mt-8 shadow-md rounded-md cursor-grab`}
+      className={`relative d-flex flex-col  p-4 bg-gray-200 mt-8 shadow-md rounded-md cursor-grab`}
     >
       {/* actual task description */}
       <h4>{task.name}</h4>

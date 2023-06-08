@@ -12,8 +12,13 @@ function App() {
   // state to store all tasks
   const [tasks, setTasks] = useState([]);
 
-  //state to know if the task is added   
+
+  // state to know when the task is added
   const [taskAdded, setTaskAdded] = useState(false);
+
+
+  const [taskAdded, setTaskAdded] = useState(false);
+
 
 
   // getting the props from child for whenever task is added getting the data from localstorage
@@ -26,7 +31,6 @@ function App() {
   const scheduleTasks = (allTasks) => {
     allTasks?.map((task) => {
       if (!task.schedule) {
-        // console.log(task.schedule);
         let date = task.date;
         let time = task.time;
 
@@ -35,20 +39,20 @@ function App() {
 
         console.log(`task scheduled for ${task.name}`);
 
+        // job scheduling
         const job = schedule.scheduleJob(targetDate, async () => {
           // console.log("Hey hi this is reminding you...", task.name);
           const taskDescription = task.name;
           let res = await axios.post("http://localhost:4000/send-mail", {
             name: taskDescription,
           });
-          console.log("response", res);
+          // console.log("response", res);
         });
-       
+
       }
       task.schedule = true;
       //update locallstorage
       localStorage.setItem("tasks", JSON.stringify(allTasks));
-      // setTasks([...allTasks,task])
     });
   };
 
